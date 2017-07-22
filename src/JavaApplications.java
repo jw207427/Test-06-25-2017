@@ -134,17 +134,33 @@ public class JavaApplications {
 		for(int i:array){
 			bt.add(i);
 		}
-		int x = 10;
-		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));
+		int x = 1;
+		//System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));
 		
 		//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
-		
+		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + breathFirstSearch(bt.getRoot(), x));
 	}
 	//=============================================================================================================
 	//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
 	//===============================================================================================================	
-	static boolean breathFirstSearch(Node parent, int x){
+	static boolean breathFirstSearch(Node root, int x){
+		Queue<Node> list = new LinkedList<Node>();
 		
+		list.add(root);
+		while(!list.isEmpty()){
+			Node temp = list.remove();
+			if(temp.getKey()==x){
+				return true;
+			}
+			
+			if(temp.getLeft()!=null){
+				list.add(temp.getLeft());
+			}
+			
+			if(temp.getRight()!=null){
+				list.add(temp.getRight());
+			}
+		}
 		return false;
 	}
 	

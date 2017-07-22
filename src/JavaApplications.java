@@ -127,7 +127,7 @@ public class JavaApplications {
 		System.out.println("Min Value is " + findMinValue(x, 0, x.length-1));*/
 		
 		//16.17 Using depth-first search, check if a tree contains a value.
-		BinaryTree bt = new BinaryTree(10);
+		/*BinaryTree bt = new BinaryTree(10);
 		
 		int[] array = {1, 5, 9, 13, 16, 18};
 		
@@ -135,19 +135,43 @@ public class JavaApplications {
 			bt.add(i);
 		}
 		int x = 10;
-		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));
+		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));*/
 		
-		//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
+		//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
+		//and d are positive integers less than 1000. If you wish, you can print only “interesting” solutions. That is, you 
+		//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
+		//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
+		//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
+		cubicFuction(10);
 		
 	}
 	//=============================================================================================================
-	//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
+	//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
+	//and d are positive integers less than 1000. If you wish, you can print only “interesting” solutions. That is, you 
+	//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
+	//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
+	//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
 	//===============================================================================================================	
-	static boolean breathFirstSearch(Node parent, int x){
+	static void cubicFuction(int max){
 		
-		return false;
+		for(int a=0; a<max; a++){
+			for(int b=a+1; b<max; b++){
+				for(int c=0; c<max; c++){
+					for(int d=c+1; d<max; d++){
+						if(cubed(a)+cubed(b)==cubed(c)+cubed(d)){
+							System.out.println("Solution: " + Integer.toString(a) + ", " + Integer.toString(b) + ", " + Integer.toString(c) + ", " + Integer.toString(d));
+						}
+					}
+					
+				}
+			}
+			
+		}
 	}
 	
+	static int cubed(int x){
+		return x*x*x;
+	}
 	//=============================================================================================================
 	//16.17 Using depth-first search, check if a tree contains a value.
 	//===============================================================================================================	

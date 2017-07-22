@@ -51,7 +51,7 @@ public class JavaApplications {
 		
 		System.out.println("Sum: " + Integer.toString(sum));*/
 		
-		/*16.7 Insert a node into a sorted linked list (in order). (Donít forget about what happens when the new element is at the start or end!)*/
+		/*16.7 Insert a node into a sorted linked list (in order). (Don‚Äôt forget about what happens when the new element is at the start or end!)*/
 		/*LNode a = new LNode(1);
 		LNode b = new LNode(3);
 		LNode c = new LNode(5);
@@ -62,7 +62,7 @@ public class JavaApplications {
 		
 		printNodeInOrder(head);*/
 		
-		/*16.8 ìSortî a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. */
+		/*16.8 ‚ÄúSort‚Äù a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. */
 		/*LNode a = new LNode(0);
 		LNode b = new LNode(1);
 		LNode c = new LNode(1);
@@ -88,7 +88,7 @@ public class JavaApplications {
 		
 		/*removeEven(revSt);*/
 		
-		//16.11 Write a function to check if two queues are identical (same values in the same order). Itís okay to modify/destroy the two queues. 
+		//16.11 Write a function to check if two queues are identical (same values in the same order). It‚Äôs okay to modify/destroy the two queues. 
 		/*int[] x = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 		int[] y = {1, 2, 4, 3};
 		Queue<Integer> a = new LinkedList<Integer>();
@@ -127,18 +127,55 @@ public class JavaApplications {
 		System.out.println("Min Value is " + findMinValue(x, 0, x.length-1));*/
 		
 		//16.17 Using depth-first search, check if a tree contains a value.
-		BinaryTree bt = new BinaryTree(10);
+		/*BinaryTree bt = new BinaryTree(10);
 		
 		int[] array = {1, 5, 9, 13, 16, 18};
 		
 		for(int i:array){
 			bt.add(i);
 		}
-		int x = 1;
-		//System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));
+
+		int x = 10;
+		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + depthFirstSearch(bt.getRoot(), x));*/
 		
+  		
 		//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
-		System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + breathFirstSearch(bt.getRoot(), x));
+		//System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + breathFirstSearch(bt.getRoot(), x));
+    
+		//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
+		//and d are positive integers less than 1000. If you wish, you can print only ‚Äúinteresting‚Äù solutions. That is, you 
+		//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
+		//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
+		//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
+		cubicFuction(10);
+		
+	}
+	//=============================================================================================================
+	//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
+	//and d are positive integers less than 1000. If you wish, you can print only ‚Äúinteresting‚Äù solutions. That is, you 
+	//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
+	//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
+	//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
+	//===============================================================================================================	
+	static void cubicFuction(int max){
+		
+		for(int a=0; a<max; a++){
+			for(int b=a+1; b<max; b++){
+				for(int c=0; c<max; c++){
+					for(int d=c+1; d<max; d++){
+						if(cubed(a)+cubed(b)==cubed(c)+cubed(d)){
+							System.out.println("Solution: " + Integer.toString(a) + ", " + Integer.toString(b) + ", " + Integer.toString(c) + ", " + Integer.toString(d));
+						}
+					}
+					
+				}
+			}
+			
+		}
+	}
+	
+	static int cubed(int x){
+		return x*x*x;
 	}
 	//=============================================================================================================
 	//16.18 Write the pseudocode for breadth-first search on a binary tree. Try to be as detailed as possible
@@ -163,7 +200,7 @@ public class JavaApplications {
 		}
 		return false;
 	}
-	
+  
 	//=============================================================================================================
 	//16.17 Using depth-first search, check if a tree contains a value.
 	//===============================================================================================================	
@@ -320,7 +357,7 @@ public class JavaApplications {
 	}
 	
 	//=================================================================================================================
-	//16.11 Write a function to check if two queues are identical (same values in the same order). Itís okay to modify/destroy the two queues. 
+	//16.11 Write a function to check if two queues are identical (same values in the same order). It‚Äôs okay to modify/destroy the two queues. 
 	//============================================================================================================
 	public static boolean compareTwoQue(Queue<Integer> a, Queue<Integer> b){
 		if(a.size()!=b.size()){
@@ -374,7 +411,7 @@ public class JavaApplications {
 		return newSt;
 	}
 	//===================================================================================================================
-	//16.8 ìSortî a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. 
+	//16.8 ‚ÄúSort‚Äù a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. 
 	//====================================================================================================================
 	public static LNode SortLNode(LNode a){
 		LNode zeroHead = null;
@@ -419,7 +456,7 @@ public class JavaApplications {
 
 	//===================================================================================================================================
 	
-	//16.7 Insert a node into a sorted linked list (in order). (Donít forget about what happens when the new element is at the start or end!)
+	//16.7 Insert a node into a sorted linked list (in order). (Don‚Äôt forget about what happens when the new element is at the start or end!)
 	
 	//=========================================================================================================================================
 	public static LNode insertNode(LNode a, int x)
@@ -695,7 +732,7 @@ class Node{
 }
 
 
-//16.7 Insert a node into a sorted linked list (in order). (Donít forget about what happens when the new element is at the start or end!)*/
+//16.7 Insert a node into a sorted linked list (in order). (Don‚Äôt forget about what happens when the new element is at the start or end!)*/
 //===========================================================================================
 class LNode{
 	int ikey;

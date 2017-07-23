@@ -62,7 +62,7 @@ public class JavaApplications {
 		
 		printNodeInOrder(head);*/
 		
-		/*16.8 “Sort” a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. */
+		/*16.8 Sort a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. */
 		/*LNode a = new LNode(0);
 		LNode b = new LNode(1);
 		LNode c = new LNode(1);
@@ -143,34 +143,42 @@ public class JavaApplications {
 		//System.out.println("The Number " + Integer.toString(x) +  " is in the Tree? " + breathFirstSearch(bt.getRoot(), x));
     
 		//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
-		//and d are positive integers less than 1000. If you wish, you can print only “interesting” solutions. That is, you 
+		//and d are positive integers less than 1000. If you wish, you can print only interesting solutions. That is, you 
 		//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
 		//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
 		//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
-		cubicFuction(10);
+		cubicFuction(100);
 		
 	}
 	//=============================================================================================================
 	//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
-	//and d are positive integers less than 1000. If you wish, you can print only “interesting” solutions. That is, you 
+	//and d are positive integers less than 1000. If you wish, you can print only interesting solutions. That is, you 
 	//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
 	//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
 	//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
 	//===============================================================================================================	
 	static void cubicFuction(int max){
-		
+		Hashtable<Integer, ArrayList<String>> ht = new Hashtable<Integer, ArrayList<String>>();
 		for(int a=0; a<max; a++){
 			for(int b=a+1; b<max; b++){
-				for(int c=0; c<max; c++){
-					for(int d=c+1; d<max; d++){
-						if(cubed(a)+cubed(b)==cubed(c)+cubed(d)){
-							System.out.println("Solution: " + Integer.toString(a) + ", " + Integer.toString(b) + ", " + Integer.toString(c) + ", " + Integer.toString(d));
-						}
-					}
-					
+				int sum = cubed(a)+cubed(b);
+				String solution = "[ " + Integer.toString(a) + ", " + Integer.toString(b) + " ]";
+				if(!ht.containsKey(sum)){
+					ht.put(sum, new ArrayList<String>());
 				}
+
+				ArrayList<String> temp = ht.get(sum);
+				temp.add(solution);
 			}
 			
+		}
+		
+		Set<Integer> keys = ht.keySet();		
+		for(int key: keys){
+			if(ht.get(key).size() > 1){
+				System.out.println(key + ": ");
+				System.out.println(ht.get(key));
+			}
 		}
 	}
 	
@@ -411,7 +419,7 @@ public class JavaApplications {
 		return newSt;
 	}
 	//===================================================================================================================
-	//16.8 “Sort” a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. 
+	//16.8 Sort a linked list that contains just 0s and 1s. That is, modify the list such that all 0s come before all 1s. 
 	//====================================================================================================================
 	public static LNode SortLNode(LNode a){
 		LNode zeroHead = null;

@@ -147,9 +147,35 @@ public class JavaApplications {
 		//can ignore solutions of the form x3 + y3 = x3 + y3 and solutions that are simple permutations of other solutions 
 		//(swapping left and right hand sides, swapping a and b, swapping c and d). For example, if you were printing all 
 		//solutions less than 20, you could choose to print only 23 + 163 = 93 + 153 and 13 + 123 = 93 + 103. 
-		cubicFuction(100);
+		//cubicFuction(100);
+		
+		//16.20 Given a string, print all permutations of that string. You can assume the word
+		//does not have any duplicate characters.
+		stringPermutation("abcd", "");
+	
+	}
+	
+	//=======================================================================================
+	//16.20 Given a string, print all permutations of that string. You can assume the word
+	//does not have any duplicate characters.
+	//========================================================================================
+	static void stringPermutation(String s, String prefix){
+		if(s.length()==0){
+			System.out.println(prefix);
+		}
+		else{
+			for(int i=0; i<s.length();i++){
+				char c = s.charAt(i);
+				String left = s.substring(0, i);
+				String right = s.substring(i+1);
+				stringPermutation(left+right, c+prefix);
+			}
+			
+		}
+		
 		
 	}
+	
 	//=============================================================================================================
 	//16.19 Design an algorithm and write code to find all solutions to the equation a3 + b3 = c3 + d3 where a, b, c,
 	//and d are positive integers less than 1000. If you wish, you can print only interesting solutions. That is, you 
